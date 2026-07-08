@@ -1,0 +1,17 @@
+# Dataset images
+data/raw/*
+data/processed/*
+
+# Keep empty data folders
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Trained models
+models/
+
+# Python temporary files
+__pycache__/
+*.pyc
+
+# Environment files
+.env
