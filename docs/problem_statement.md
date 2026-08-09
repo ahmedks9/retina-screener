@@ -60,3 +60,19 @@ patient-level (combining both eyes).
 - Dataset origin: multi-hospital, multi-camera -- requires
   normalization to avoid shortcut learning tied to acquisition
   equipment rather than disease signal (Step 1.2.2).
+
+## Scope Amendment (Chapter 2, Phase 2.2)
+After computing real class distribution on the dataset, a deliberate scope
+decision was made to exclude Hypertensive Retinopathy (H) from the target
+classes. Rationale: H has only 128 images (22.4x fewer than Normal), a
+significantly worse imbalance ratio than the next-smallest class, M
+(Myopia, 232 images, 12.4x ratio) -- an 81% jump in difficulty versus a
+smooth 3-15% step-up between the other minority classes (C, G, A, M).
+Including H would require aggressive imbalance handling for a single
+class with a high risk of unreliable, non-trustworthy metrics.
+
+Updated target classes (7, down from 8): N, D, O, C, G, A, M
+Excluded: H (Hypertensive Retinopathy)
+
+This is a conscious reliability-over-completeness tradeoff, documented
+here for transparency in the final report (Chapter 11).
