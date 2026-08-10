@@ -76,3 +76,23 @@ Excluded: H (Hypertensive Retinopathy)
 
 This is a conscious reliability-over-completeness tradeoff, documented
 here for transparency in the final report (Chapter 11).
+
+## Data Filtering Decision (Chapter 2, Phase 2.2)
+128 rows whose only label was the excluded H (Hypertensive Retinopathy)
+class are dropped entirely from the working dataset, rather than kept
+as all-zero label vectors. Rationale: an all-zero vector would falsely
+imply "no disease present" when the patient does have a condition we
+simply chose not to track -- keeping these rows would silently
+introduce mislabeled data.
+
+Final working dataset size: 6264 rows (down from 6392).
+
+## Data Quality Findings (Chapter 2, Phase 2.3)
+- 0 corrupt or missing files out of 6392 checked.
+- 0 exact-duplicate images (safe from split leakage via exact copies).
+- Resolution varies significantly: width 250-5184px, height 188-3456px.
+- Aspect ratio ranges from 1.00 (square) to 2.15 (wide), avg 1.37 -
+  confirms multi-camera/multi-hospital origin (Step 1.2.2). This
+  requires a deliberate resize strategy in Phase 3.1 (likely
+  aspect-ratio-preserving padding rather than naive stretch-to-square)
+  to avoid distorting diagnostic features.
