@@ -67,3 +67,26 @@ This opens a browser tab where you can upload a fundus image and get a
 prediction with a Grad-CAM overlay.
 
 ## Project Structure
+
+data/ raw and processed datasets, train/val/test splits
+src/ core pipeline code (data, model, training, inference) — flat
+eda/ exploratory analysis and evaluation scripts — flat
+app/ FastAPI backend (api.py) + Streamlit frontend (streamlit_app.py)
+models/ trained model checkpoint (partial_ft_v2_raw_best.pt)
+logs/ training run logs and plots
+
+
+## Known Limitations
+- Overall test accuracy (~41%) reflects the difficulty of the full 7-class
+  task on a modest dataset with real class imbalance.
+- The "Other" (O) class has no single coherent visual signature and remains
+  the weakest-performing class.
+- The model shows a systematic bias toward predicting "Normal" when
+  uncertain — see project report for the confusion matrix analysis.
+- Not validated for clinical use. This is a research/educational project.
+
+## Future Work
+- Further hyperparameter tuning (dropout rate, input resolution, backbone
+  learning rate) — several options identified but not yet tested.
+- Pixel-level lesion/vessel segmentation as a separate, larger project.
+- Addressing the "default to Normal" prediction bias.
