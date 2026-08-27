@@ -5,6 +5,12 @@ during a 2026 summer internship at Afrique Med. Upload a fundus photo and get
 a predicted diagnosis across 7 classes, along with a Grad-CAM visualization
 showing which regions of the image most influenced the model's decision.
 
+## Demo
+
+| Upload | Result |
+|---|---|
+| ![Upload screen](readme_assets/app_upload.png) | ![Result screen](readme_assets/app_result.png) |
+
 ## Disease Classes
 `N` Normal · `D` Diabetic Retinopathy · `O` Other · `C` Cataract ·
 `G` Glaucoma · `A` Age-related Macular Degeneration · `M` Myopia
@@ -24,6 +30,13 @@ imbalance — see project report for details.)
 - Test set: 41.0% accuracy, macro-F1 0.431, macro-AUC 0.802
 - Optimized for recall on rare classes over raw accuracy (clinical
   screening priority — a missed disease is worse than a false alarm)
+
+## Model Interpretability
+The model produces Grad-CAM visualizations showing which regions of the
+retina most influenced its prediction — useful for sanity-checking whether
+the model is looking at clinically plausible areas.
+
+![Grad-CAM Example](readme_assets/gradcam_example.png)
 
 ## Setup
 
